@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad - Remember Moon</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fcfbfa;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #eae6df;
+        }
+        h1, h2, h3 {
+            color: #bfa054; /* Color mockGold de tu app */
+            font-family: Georgia, serif;
+        }
+        h1 {
+            border-bottom: 2px solid #eae6df;
+            padding-bottom: 10px;
+            color: #1b3a2b; /* Color primaryGreen de tu app */
+        }
+        h2 {
+            margin-top: 30px;
+            font-size: 1.4rem;
+        }
+        h3 {
+            color: #333;
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
+        .last-updated {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .language-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .lang-btn {
+            background-color: #eae6df;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #555;
+            transition: all 0.2s ease;
+        }
+        .lang-btn.active {
+            background-color: #1b3a2b;
+            color: #fff;
+        }
+        .lang-section {
+            display: none;
+        }
+        .lang-section.active {
+            display: block;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #eae6df;
+            margin: 40px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Selector de Idioma -->
+    <div class="language-selector">
+        <button class="lang-btn active" onclick="switchLanguage('es')">Español</button>
+        <button class="lang-btn" onclick="switchLanguage('en')">English</button>
+    </div>
+
+    <!-- SECCIÓN EN ESPAÑOL -->
+    <div id="lang-es" class="lang-section active">
+        <h1>Política de Privacidad</h1>
+        <p class="last-updated">Última actualización: 30 de mayo de 2026</p>
+        
+        <p>En <strong>Remember Moon</strong>, valoramos y respetamos profundamente tu privacidad. Esta Política de Privacidad describe cómo recopilamos, utilizamos, almacenamos y protegemos la información personal y los datos astrológicos que introduces en la aplicación móvil Remember Moon.</p>
+
+        <h2>1. Principio Fundamental: Enfoque Local ("Local-First")</h2>
+        <p>Remember Moon está diseñada bajo el principio de privacidad por diseño. Esto significa que:</p>
+        <ul>
+            <li><strong>Tus datos te pertenecen:</strong> El diario personal, las notas, las emociones registradas y los detalles de tu Carta Natal se guardan de forma local en el almacenamiento seguro de tu propio dispositivo.</li>
+            <li><strong>Sin servidores centrales:</strong> No subimos tu diario ni tus cartas natales a servidores externos o bases de datos centralizadas administradas por nosotros. Tu información privada no sale de tu teléfono a menos que decidas explícitamente realizar una copia de seguridad externa.</li>
+        </ul>
+
+        <h2>2. Información que Recopilamos y Procesamos</h2>
+        
+        <h3>A. Datos de la Carta Natal (Datos de Nacimiento)</h3>
+        <p>Para calcular tu Carta Natal y los tránsitos astrológicos en tiempo real, te solicitamos introducir:</p>
+        <ul>
+            <li>Fecha de nacimiento.</li>
+            <li>Hora exacta de nacimiento.</li>
+            <li>Lugar de nacimiento (ciudad y país).</li>
+        </ul>
+        <p><em>Uso de estos datos:</em> Estos datos se procesan localmente en el motor astrológico de la aplicación para determinar la posición de los planetas y mostrarte información personalizada. No se asocian con tu identidad real ni se transmiten a terceros.</p>
+
+        <h3>B. Entradas del Diario</h3>
+        <p>Cuando escribes en tu diario de tránsitos de Remember Moon:</p>
+        <ul>
+            <li>Almacenamos el texto de tu entrada, las efemérides seleccionadas y tu estado emocional en la base de datos local (SQLite/Drift) del dispositivo.</li>
+            <li>Esta información es completamente confidencial y no es accesible por nuestro equipo ni por ningún agente externo.</li>
+        </ul>
+
+        <h3>C. Ubicación Geográfica (Búsqueda de Coordenadas)</h3>
+        <ul>
+            <li>Para facilitarte la introducción del lugar de nacimiento, la app cuenta con un motor de búsqueda de ciudades (Geocoding).</li>
+            <li>Al escribir una ciudad en la configuración, se realiza una consulta puntual a un servicio de mapas externo para obtener únicamente la latitud, longitud y zona horaria de dicha ciudad. No compartimos tu ubicación actual en tiempo real ni tu GPS.</li>
+        </ul>
+
+        <h2>3. Seguridad de los Datos</h2>
+        <p>Para proteger tus reflexiones más íntimas y tus datos astrológicos, Remember Moon incluye las siguientes medidas de seguridad:</p>
+        <ul>
+            <li><strong>Bloqueo por PIN de Seguridad:</strong> Puedes activar opcionalmente un PIN de 4 dígitos desde los ajustes de la aplicación. Al habilitarlo, la aplicación requerirá dicho PIN para acceder a las secciones del diario, búsquedas y calendario, evitando que terceros que usen tu dispositivo físico accedan a tu información.</li>
+            <li><strong>Aislamiento del Dispositivo:</strong> La base de datos local de la aplicación está protegida por los mecanismos de seguridad nativos del sistema operativo (iOS/Android), que aíslan los datos de Remember Moon de otras aplicaciones instaladas.</li>
+        </ul>
+
+        <h2>4. Copias de Seguridad (Backup)</h2>
+        <ul>
+            <li>Remember Moon incluye una función para realizar copias de seguridad manuales de tus datos.</li>
+            <li>Al generar una copia de seguridad, la aplicación exporta un archivo comprimido o cifrado a la ubicación que elijas en tu dispositivo o cuenta de almacenamiento en la nube (como Google Drive o iCloud, según tu configuración de sistema).</li>
+            <li>Tú eres el único responsable de la seguridad y el almacenamiento de dichos archivos de respaldo.</li>
+        </ul>
+
+        <h2>5. Derechos de Control del Usuario</h2>
+        <p>Dado que todos los datos residen en tu dispositivo, tienes control absoluto e inmediato sobre ellos:</p>
+        <ul>
+            <li><strong>Modificación y Eliminación:</strong> Puedes editar o borrar cualquier entrada de tu diario o cambiar tus datos de nacimiento en cualquier momento desde la configuración de la app.</li>
+            <li><strong>Eliminación Total:</strong> Si deseas borrar de forma permanente todos tus datos, puedes hacerlo desinstalando la aplicación. Este proceso eliminará de forma irreversible toda la base de datos local de Remember Moon en tu dispositivo.</li>
+        </ul>
+
+        <h2>6. Cambios a esta Política de Privacidad</h2>
+        <p>Nos reservamos el derecho de actualizar esta Política de Privacidad periódicamente. Si realizamos cambios significativos (por ejemplo, si en el futuro decidimos implementar sincronización opcional en la nube), te lo notificaremos directamente a través de una actualización de la aplicación o un aviso destacado dentro de la misma, permitiéndote decidir si deseas continuar utilizando dichas funciones.</p>
+
+        <h2>7. Contacto</h2>
+        <p>Si tienes alguna pregunta, inquietud o sugerencia sobre nuestra política de privacidad, puedes ponerte en contacto con nosotros en:</p>
+        <ul>
+            <li>Correo electrónico de soporte: <a href="mailto:soporte@moonj.app">soporte@moonj.app</a></li>
+        </ul>
+    </div>
+
+    <!-- SECCIÓN EN INGLÉS -->
+    <div id="lang-en" class="lang-section">
+        <h1>Privacy Policy</h1>
+        <p class="last-updated">Last updated: May 30, 2026</p>
+        
+        <p>At <strong>Remember Moon</strong>, we deeply value and respect your privacy. This Privacy Policy describes how we collect, use, store, and protect the personal information and astrological data you enter in the Remember Moon mobile application.</p>
+
+        <h2>1. Fundamental Principle: Local-First</h2>
+        <p>Remember Moon is designed under the principle of privacy by design. This means that:</p>
+        <ul>
+            <li><strong>Your data belongs to you:</strong> The personal journal, notes, recorded emotions, and birth chart details are stored locally in the secure storage of your own device.</li>
+            <li><strong>No central servers:</strong> We do not upload your journal or birth charts to external servers or centralized databases managed by us. Your private information does not leave your phone unless you explicitly choose to create an external backup.</li>
+        </ul>
+
+        <h2>2. Information We Collect and Process</h2>
+        
+        <h3>A. Birth Chart Data (Birth Details)</h3>
+        <p>To calculate your Birth Chart and astrological transits in real-time, we request you to enter:</p>
+        <ul>
+            <li>Date of birth.</li>
+            <li>Exact time of birth.</li>
+            <li>Place of birth (city and country).</li>
+        </ul>
+        <p><em>Use of this data:</em> This data is processed locally in the application's astrological engine to determine the position of the planets and display personalized information. It is not associated with your real identity nor transmitted to third parties.</p>
+
+        <h3>B. Journal Entries</h3>
+        <p>When you write in your Remember Moon transit journal:</p>
+        <ul>
+            <li>We store the text of your entry, the selected ephemerides, and your emotional state in the local database (SQLite/Drift) of the device.</li>
+            <li>This information is completely confidential and is not accessible by our team or any external agent.</li>
+        </ul>
+
+        <h3>C. Geographical Location (Coordinates Search)</h3>
+        <ul>
+            <li>To help you easily input your place of birth, the app features a city search engine (Geocoding).</li>
+            <li>When typing a city in settings, a specific query is made to an external map service to obtain only the latitude, longitude, and timezone of that city. We do not share your current real-time location or GPS coordinates.</li>
+        </ul>
+
+        <h2>3. Data Security</h2>
+        <p>To protect your most intimate reflections and astrological data, Remember Moon includes the following security measures:</p>
+        <ul>
+            <li><strong>Security PIN Lock:</strong> You can optionally enable a 4-digit PIN from the application settings. Once enabled, the application will require this PIN to access the journal, search, and calendar sections, preventing third parties using your physical device from accessing your information.</li>
+            <li><strong>Device Isolation:</strong> The app's local database is protected by native operating system security mechanisms (iOS/Android), which isolate Remember Moon's data from other installed apps.</li>
+        </ul>
+
+        <h2>4. Backups</h2>
+        <ul>
+            <li>Remember Moon includes a feature to perform manual backups of your data.</li>
+            <li>When generating a backup, the app exports a compressed or encrypted file to the location you choose on your device or cloud storage account (such as Google Drive or iCloud, depending on your system configuration).</li>
+            <li>You are solely responsible for the security and storage of these backup files.</li>
+        </ul>
+
+        <h2>5. User Control Rights</h2>
+        <p>Since all data resides on your device, you have absolute and immediate control over it:</p>
+        <ul>
+            <li><strong>Modification and Deletion:</strong> You can edit or delete any journal entry or change your birth details at any time from the app settings.</li>
+            <li><strong>Full Deletion:</strong> If you wish to permanently delete all your data, you can do so by uninstalling the application. This process will irreversibly remove the entire Remember Moon local database from your device.</li>
+        </ul>
+
+        <h2>6. Changes to this Privacy Policy</h2>
+        <p>We reserve the right to update this Privacy Policy periodically. If we make significant changes (for example, if in the future we decide to implement optional cloud sync), we will notify you directly through an app update or a prominent notice within it, allowing you to decide whether to continue using those features.</p>
+
+        <h2>7. Contact</h2>
+        <p>If you have any questions, concerns, or suggestions about our privacy policy, you can contact us at:</p>
+        <ul>
+            <li>Support Email: <a href="mailto:soporte@moonj.app">soporte@moonj.app</a></li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function switchLanguage(lang) {
+        // Ocultar todas las secciones
+        document.querySelectorAll('.lang-section').forEach(section => {
+            section.classList.remove('active');
+        });
+        // Desactivar todos los botones
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        
+        // Activar la seleccionada
+        document.getElementById('lang-' + lang).classList.add('active');
+        event.currentTarget.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
