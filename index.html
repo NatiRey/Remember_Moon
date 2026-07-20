@@ -3,251 +3,449 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política de Privacidad - Remember Moon</title>
+    <title>Remember Moon — Diario con tránsitos y fases lunares</title>
+    <meta name="description" content="Registra tu día, descubre tus patrones emocionales y conecta tus vivencias con los tránsitos astrológicos y las fases de la Luna. Privacidad 100% local.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-color: #0B110E;
+            --card-bg: rgba(15, 26, 19, 0.45);
+            --primary-accent: #E5C38C; /* Gold / Moon light */
+            --secondary-accent: #A5C4B4; /* Sage green */
+            --text-main: #F4F7F5;
+            --text-muted: #8FA397;
+            --glow-color: rgba(229, 195, 140, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             line-height: 1.6;
-            color: #333;
-            max-width: 800px;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(229, 195, 140, 0.04) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(165, 196, 180, 0.05) 0%, transparent 40%);
+        }
+
+        /* Stars Background Effect */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px);
+            background-size: 550px 550px, 350px 350px;
+            background-position: 0 0, 40px 60px;
+            opacity: 0.25;
+        }
+
+        header {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            background-color: #fcfbfa;
-        }
-        .container {
-            background-color: #ffffff;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border: 1px solid #eae6df;
-        }
-        h1, h2, h3 {
-            color: #bfa054; /* Color mockGold de tu app */
-            font-family: Georgia, serif;
-        }
-        h1 {
-            border-bottom: 2px solid #eae6df;
-            padding-bottom: 10px;
-            color: #1b3a2b; /* Color primaryGreen de tu app */
-        }
-        h2 {
-            margin-top: 30px;
-            font-size: 1.4rem;
-        }
-        h3 {
-            color: #333;
-            font-size: 1.1rem;
-            margin-top: 20px;
-        }
-        .last-updated {
-            font-size: 0.9rem;
-            color: #666;
-            font-style: italic;
-            margin-bottom: 30px;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        li {
-            margin-bottom: 10px;
-        }
-        .language-selector {
+            padding: 2rem;
             display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
+            justify-content: space-between;
+            align-items: center;
         }
-        .lang-btn {
-            background-color: #eae6df;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            color: #555;
-            transition: all 0.2s ease;
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
         }
-        .lang-btn.active {
-            background-color: #1b3a2b;
-            color: #fff;
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-accent), transparent);
+            box-shadow: 0 0 15px var(--glow-color);
+            position: relative;
         }
-        .lang-section {
-            display: none;
+
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 6px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: var(--bg-color);
         }
-        .lang-section.active {
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-main);
+            letter-spacing: 0.5px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem 8rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Moon graphic */
+        .moon-art {
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle at 30% 30%, #FFF7E6 0%, var(--primary-accent) 50%, #B88E4C 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 40px rgba(229, 195, 140, 0.3), inset -10px -10px 30px rgba(0,0,0,0.6);
+            margin-bottom: 2.5rem;
+            animation: pulse 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 35px rgba(229, 195, 140, 0.25); }
+            100% { transform: scale(1.04); box-shadow: 0 0 55px rgba(229, 195, 140, 0.45); }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.15;
+            font-weight: 600;
+            max-width: 800px;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(180deg, #FFFFFF 0%, #D0DCD5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p.tagline {
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        /* Download Buttons */
+        .download-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-bottom: 4rem;
+        }
+
+        .btn-store {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 0.8rem 1.8rem;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(8px);
+        }
+
+        .btn-store svg {
+            width: 24px;
+            height: 24px;
+            margin-right: 0.75rem;
+            fill: currentColor;
+        }
+
+        .btn-store .btn-text {
+            text-align: left;
+        }
+
+        .btn-store .btn-subtitle {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
             display: block;
         }
-        hr {
-            border: 0;
-            height: 1px;
-            background: #eae6df;
-            margin: 40px 0;
+
+        .btn-store .btn-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            display: block;
+        }
+
+        .btn-store:hover {
+            background: rgba(229, 195, 140, 0.1);
+            border-color: var(--primary-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Features Section */
+        .features-grid {
+            position: relative;
+            z-index: 10;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem 8rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(165, 196, 180, 0.1);
+            border-radius: 18px;
+            padding: 2.5rem 2rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-accent), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(229, 195, 140, 0.3);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            color: var(--primary-accent);
+        }
+
+        .feature-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        /* Value Prop (Privacy) Section */
+        .privacy-highlight {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            margin: 0 auto 8rem auto;
+            padding: 3rem 2rem;
+            background: radial-gradient(circle at top right, rgba(165, 196, 180, 0.08), transparent);
+            border: 1px dashed rgba(165, 196, 180, 0.2);
+            border-radius: 24px;
+            text-align: center;
+            backdrop-filter: blur(4px);
+        }
+
+        .privacy-highlight h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-accent);
+        }
+
+        .privacy-highlight p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Footer */
+        footer {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-accent);
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: rgba(143, 163, 151, 0.5);
+            text-align: center;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            .hero {
+                padding-top: 2rem;
+            }
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <!-- Selector de Idioma -->
-    <div class="language-selector">
-        <button class="lang-btn active" onclick="switchLanguage('es')">Español</button>
-        <button class="lang-btn" onclick="switchLanguage('en')">English</button>
-    </div>
+    <div class="stars"></div>
 
-    <!-- SECCIÓN EN ESPAÑOL -->
-    <div id="lang-es" class="lang-section active">
-        <h1>Política de Privacidad</h1>
-        <p class="last-updated">Última actualización: 30 de mayo de 2026</p>
-        
-        <p>En <strong>Remember Moon</strong>, valoramos y respetamos profundamente tu privacidad. Esta Política de Privacidad describe cómo recopilamos, utilizamos, almacenamos y protegemos la información personal y los datos astrológicos que introduces en la aplicación móvil Remember Moon.</p>
+    <header>
+        <a href="#" class="logo-container">
+            <div class="logo-icon"></div>
+            <span class="logo-text">Remember Moon</span>
+        </a>
+        <nav>
+            <a href="privacy.html">Privacidad</a>
+        </nav>
+    </header>
 
-        <h2>1. Principio Fundamental: Enfoque Local ("Local-First")</h2>
-        <p>Remember Moon está diseñada bajo el principio de privacidad por diseño. Esto significa que:</p>
-        <ul>
-            <li><strong>Tus datos te pertenecen:</strong> El diario personal, las notas, las emociones registradas y los detalles de tu Carta Natal se guardan de forma local en el almacenamiento seguro de tu propio dispositivo.</li>
-            <li><strong>Sin servidores centrales:</strong> No subimos tu diario ni tus cartas natales a servidores externos o bases de datos centralizadas administradas por nosotros. Tu información privada no sale de tu teléfono a menos que decidas explícitamente realizar una copia de seguridad externa.</li>
-        </ul>
+    <main>
+        <section class="hero">
+            <div class="moon-art"></div>
+            <h1>Sincroniza tus días con el ritmo del cosmos</h1>
+            <p class="tagline">Diario íntimo local con análisis interactivo de fases lunares y tránsitos astrológicos en tiempo real.</p>
+            
+            <div class="download-buttons">
+                <!-- Google Play Button -->
+                <a href="https://play.google.com/store/apps/details?id=natirey.remembermoon" class="btn-store" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3M17.5,12L8,6.5V17.5L17.5,12Z"/>
+                    </svg>
+                    <span class="btn-text">
+                        <span class="btn-subtitle">Disponible en</span>
+                        <span class="btn-title">Google Play</span>
+                    </span>
+                </a>
+                
+                <!-- App Store Button (Placeholder or Apple Link) -->
+                <a href="#" class="btn-store" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,22C14.32,22.05 13.89,21.24 12.37,21.24C10.84,21.24 10.37,21.97 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.1,16.67C20.08,16.74 19.67,18.11 18.71,19.5M15.97,4.17C16.63,3.37 17.07,2.28 16.95,1C16,1.04 14.9,1.6 14.24,2.38C13.68,3.04 13.19,4.14 13.34,5.39C14.39,5.47 15.4,4.88 15.97,4.17Z"/>
+                    </svg>
+                    <span class="btn-text">
+                        <span class="btn-subtitle">Próximamente en</span>
+                        <span class="btn-title">App Store</span>
+                    </span>
+                </a>
+            </div>
+        </section>
 
-        <h2>2. Información que Recopilamos y Procesamos</h2>
-        
-        <h3>A. Datos de la Carta Natal (Datos de Nacimiento)</h3>
-        <p>Para calcular tu Carta Natal y los tránsitos astrológicos en tiempo real, te solicitamos introducir:</p>
-        <ul>
-            <li>Fecha de nacimiento.</li>
-            <li>Hora exacta de nacimiento.</li>
-            <li>Lugar de nacimiento (ciudad y país).</li>
-        </ul>
-        <p><em>Uso de estos datos:</em> Estos datos se procesan localmente en el motor astrológico de la aplicación para determinar la posición de los planetas y mostrarte información personalizada. No se asocian con tu identidad real ni se transmiten a terceros.</p>
+        <section class="features-grid">
+            <div class="feature-card">
+                <span class="feature-icon">🌙</span>
+                <h3>Diario de Tránsitos</h3>
+                <p>Escribe tus reflexiones diarias y asócialas a eventos celestes. Visualiza cómo las fases lunares y los planetas afectan tu estado de ánimo.</p>
+            </div>
+            
+            <div class="feature-card">
+                <span class="feature-icon">✨</span>
+                <h3>Cálculo de Carta Natal</h3>
+                <p>Descubre tu configuración cósmica al instante. Cálculos precisos basados en tu hora y coordenadas geográficas de nacimiento.</p>
+            </div>
 
-        <h3>B. Entradas del Diario</h3>
-        <p>Cuando escribes en tu diario de tránsitos de Remember Moon:</p>
-        <ul>
-            <li>Almacenamos el texto de tu entrada, las efemérides seleccionadas y tu estado emocional en la base de datos local (SQLite/Drift) del dispositivo.</li>
-            <li>Esta información es completamente confidencial y no es accesible por nuestro equipo ni por ningún agente externo.</li>
-        </ul>
+            <div class="feature-card">
+                <span class="feature-icon">🎙️</span>
+                <h3>Notas de Voz</h3>
+                <p>Expresa tus sentimientos cómodamente con el dictado por voz local. Tus audios se transcriben de forma privada en tu dispositivo.</p>
+            </div>
 
-        <h3>C. Ubicación Geográfica (Búsqueda de Coordenadas)</h3>
-        <ul>
-            <li>Para facilitarte la introducción del lugar de nacimiento, la app cuenta con un motor de búsqueda de ciudades (Geocoding).</li>
-            <li>Al escribir una ciudad en la configuración, se realiza una consulta puntual a un servicio de mapas externo para obtener únicamente la latitud, longitud y zona horaria de dicha ciudad. No compartimos tu ubicación actual en tiempo real ni tu GPS.</li>
-        </ul>
+            <div class="feature-card">
+                <span class="feature-icon">🔒</span>
+                <h3>PIN de Seguridad</h3>
+                <p>Protege tus pensamientos íntimos de miradas ajenas mediante un código PIN y autenticación biométrica nativa.</p>
+            </div>
+        </section>
 
-        <h2>3. Seguridad de los Datos</h2>
-        <p>Para proteger tus reflexiones más íntimas y tus datos astrológicos, Remember Moon incluye las siguientes medidas de seguridad:</p>
-        <ul>
-            <li><strong>Bloqueo por PIN de Seguridad:</strong> Puedes activar opcionalmente un PIN de 4 dígitos desde los ajustes de la aplicación. Al habilitarlo, la aplicación requerirá dicho PIN para acceder a las secciones del diario, búsquedas y calendario, evitando que terceros que usen tu dispositivo físico accedan a tu información.</li>
-            <li><strong>Aislamiento del Dispositivo:</strong> La base de datos local de la aplicación está protegida por los mecanismos de seguridad nativos del sistema operativo (iOS/Android), que aíslan los datos de Remember Moon de otras aplicaciones instaladas.</li>
-        </ul>
+        <section class="privacy-highlight">
+            <h2>Privacidad Local Absoluta (Local-First)</h2>
+            <p>Tus datos son tuyos y de nadie más. Remember Moon almacena todas tus entradas y datos de nacimiento directamente en tu teléfono. No hay servidores intermedios, ni cuentas obligatorias, ni rastreo.</p>
+        </section>
+    </main>
 
-        <h2>4. Copias de Seguridad (Backup)</h2>
-        <ul>
-            <li>Remember Moon incluye una función para realizar copias de seguridad manuales de tus datos.</li>
-            <li>Al generar una copia de seguridad, la aplicación exporta un archivo comprimido o cifrado a la ubicación que elijas en tu dispositivo o cuenta de almacenamiento en la nube (como Google Drive o iCloud, según tu configuración de sistema).</li>
-            <li>Tú eres el único responsable de la seguridad y el almacenamiento de dichos archivos de respaldo.</li>
-        </ul>
-
-        <h2>5. Derechos de Control del Usuario</h2>
-        <p>Dado que todos los datos residen en tu dispositivo, tienes control absoluto e inmediato sobre ellos:</p>
-        <ul>
-            <li><strong>Modificación y Eliminación:</strong> Puedes editar o borrar cualquier entrada de tu diario o cambiar tus datos de nacimiento en cualquier momento desde la configuración de la app.</li>
-            <li><strong>Eliminación Total:</strong> Si deseas borrar de forma permanente todos tus datos, puedes hacerlo desinstalando la aplicación. Este proceso eliminará de forma irreversible toda la base de datos local de Remember Moon en tu dispositivo.</li>
-        </ul>
-
-        <h2>6. Cambios a esta Política de Privacidad</h2>
-        <p>Nos reservamos el derecho de actualizar esta Política de Privacidad periódicamente. Si realizamos cambios significativos (por ejemplo, si en el futuro decidimos implementar sincronización opcional en la nube), te lo notificaremos directamente a través de una actualización de la aplicación o un aviso destacado dentro de la misma, permitiéndote decidir si deseas continuar utilizando dichas funciones.</p>
-
-        <h2>7. Contacto</h2>
-        <p>Si tienes alguna pregunta, inquietud o sugerencia sobre nuestra política de privacidad, puedes ponerte en contacto con nosotros en:</p>
-        <ul>
-            <li>Correo electrónico de soporte: <a href="mailto:soporte@moonj.app">pepapps.support@gmail.com</a></li>
-        </ul>
-    </div>
-
-    <!-- SECCIÓN EN INGLÉS -->
-    <div id="lang-en" class="lang-section">
-        <h1>Privacy Policy</h1>
-        <p class="last-updated">Last updated: May 30, 2026</p>
-        
-        <p>At <strong>Remember Moon</strong>, we deeply value and respect your privacy. This Privacy Policy describes how we collect, use, store, and protect the personal information and astrological data you enter in the Remember Moon mobile application.</p>
-
-        <h2>1. Fundamental Principle: Local-First</h2>
-        <p>Remember Moon is designed under the principle of privacy by design. This means that:</p>
-        <ul>
-            <li><strong>Your data belongs to you:</strong> The personal journal, notes, recorded emotions, and birth chart details are stored locally in the secure storage of your own device.</li>
-            <li><strong>No central servers:</strong> We do not upload your journal or birth charts to external servers or centralized databases managed by us. Your private information does not leave your phone unless you explicitly choose to create an external backup.</li>
-        </ul>
-
-        <h2>2. Information We Collect and Process</h2>
-        
-        <h3>A. Birth Chart Data (Birth Details)</h3>
-        <p>To calculate your Birth Chart and astrological transits in real-time, we request you to enter:</p>
-        <ul>
-            <li>Date of birth.</li>
-            <li>Exact time of birth.</li>
-            <li>Place of birth (city and country).</li>
-        </ul>
-        <p><em>Use of this data:</em> This data is processed locally in the application's astrological engine to determine the position of the planets and display personalized information. It is not associated with your real identity nor transmitted to third parties.</p>
-
-        <h3>B. Journal Entries</h3>
-        <p>When you write in your Remember Moon transit journal:</p>
-        <ul>
-            <li>We store the text of your entry, the selected ephemerides, and your emotional state in the local database (SQLite/Drift) of the device.</li>
-            <li>This information is completely confidential and is not accessible by our team or any external agent.</li>
-        </ul>
-
-        <h3>C. Geographical Location (Coordinates Search)</h3>
-        <ul>
-            <li>To help you easily input your place of birth, the app features a city search engine (Geocoding).</li>
-            <li>When typing a city in settings, a specific query is made to an external map service to obtain only the latitude, longitude, and timezone of that city. We do not share your current real-time location or GPS coordinates.</li>
-        </ul>
-
-        <h2>3. Data Security</h2>
-        <p>To protect your most intimate reflections and astrological data, Remember Moon includes the following security measures:</p>
-        <ul>
-            <li><strong>Security PIN Lock:</strong> You can optionally enable a 4-digit PIN from the application settings. Once enabled, the application will require this PIN to access the journal, search, and calendar sections, preventing third parties using your physical device from accessing your information.</li>
-            <li><strong>Device Isolation:</strong> The app's local database is protected by native operating system security mechanisms (iOS/Android), which isolate Remember Moon's data from other installed apps.</li>
-        </ul>
-
-        <h2>4. Backups</h2>
-        <ul>
-            <li>Remember Moon includes a feature to perform manual backups of your data.</li>
-            <li>When generating a backup, the app exports a compressed or encrypted file to the location you choose on your device or cloud storage account (such as Google Drive or iCloud, depending on your system configuration).</li>
-            <li>You are solely responsible for the security and storage of these backup files.</li>
-        </ul>
-
-        <h2>5. User Control Rights</h2>
-        <p>Since all data resides on your device, you have absolute and immediate control over it:</p>
-        <ul>
-            <li><strong>Modification and Deletion:</strong> You can edit or delete any journal entry or change your birth details at any time from the app settings.</li>
-            <li><strong>Full Deletion:</strong> If you wish to permanently delete all your data, you can do so by uninstalling the application. This process will irreversibly remove the entire Remember Moon local database from your device.</li>
-        </ul>
-
-        <h2>6. Changes to this Privacy Policy</h2>
-        <p>We reserve the right to update this Privacy Policy periodically. If we make significant changes (for example, if in the future we decide to implement optional cloud sync), we will notify you directly through an app update or a prominent notice within it, allowing you to decide whether to continue using those features.</p>
-
-        <h2>7. Contact</h2>
-        <p>If you have any questions, concerns, or suggestions about our privacy policy, you can contact us at:</p>
-        <ul>
-             <li>Support Email: <a href="mailto:soporte@moonj.app">pepapps.support@gmail.com</a></li>
-        </ul>
-    </div>
-</div>
-
-<script>
-    function switchLanguage(lang) {
-        // Ocultar todas las secciones
-        document.querySelectorAll('.lang-section').forEach(section => {
-            section.classList.remove('active');
-        });
-        // Desactivar todos los botones
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        
-        // Activar la seleccionada
-        document.getElementById('lang-' + lang).classList.add('active');
-        event.currentTarget.classList.add('active');
-    }
-</script>
+    <footer>
+        <div class="footer-links">
+            <a href="privacy.html">Política de Privacidad</a>
+            <a href="mailto:soporte@moonj.app">Soporte</a>
+        </div>
+        <p class="copyright">&copy; 2026 Remember Moon. Todos los derechos reservados.</p>
+    </footer>
 
 </body>
 </html>
